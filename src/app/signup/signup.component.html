@@ -1,0 +1,78 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Uusername</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        formControlName="username"
+      />
+      <div
+        *ngIf="
+          form.get('username').invalid &&
+          (form.get('username').dirty || form.get('username').touched)
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="form.get('username').errors.required"
+        >
+          Bắt buộc nhập
+        </div>
+        <div *ngIf="form.get('username').errors.minlength">Ít nhất 3 ký tự</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="text"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
+      <div
+        *ngIf="
+          form.get('email').invalid &&
+          (form.get('email').dirty || form.get('email').touched)
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="form.get('email').errors.required"
+        >
+          Bắt buộc nhập
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="pasword" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+      />
+      <div
+        *ngIf="
+          form.get('password').invalid &&
+          (form.get('password').dirty || form.get('password').touched)
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="form.get('password').errors.required"
+        >
+          Bắt buộc nhập
+        </div>
+        <div *ngIf="form.get('password').errors.minlength">Ít nhất 3 ký tự</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <button class="btn btn-primary" htmlType="submit">Đăng ký</button>
+    </div>
+  </form>
+</div>

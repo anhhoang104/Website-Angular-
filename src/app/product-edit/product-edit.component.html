@@ -1,0 +1,74 @@
+<div class="container">
+  <h2>Sửa sản phẩm</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Tên sản phẩm</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+      />
+      <div
+        *ngIf="
+          form.get('name').invalid &&
+          (form.get('name').dirty || form.get('name').touched)
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="form.get('name').errors.required"
+        >
+          Bắt buộc nhập
+        </div>
+        <div *ngIf="form.get('name').errors.minlength">Ít nhất 3 ký tự</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Giá sản phẩm</label>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        formControlName="price"
+      />
+      <div
+        *ngIf="
+          form.get('price').invalid &&
+          (form.get('price').dirty || form.get('price').touched)
+        "
+      >
+        <div
+          class="alert alert-danger"
+          *ngIf="form.get('price').errors.required"
+        >
+          Bắt buộc nhập
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="quantity" class="form-label">Số lượng sản phẩm</label>
+      <input
+        type="number"
+        class="form-control"
+        id="quantity"
+        formControlName="quantity"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Mô tả sản phẩm</label>
+      <textarea
+        name="description"
+        id="description"
+        rows="18"
+        class="form-control"
+        formControlName="description"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <button class="btn btn-primary" htmlType="submit">Thêm</button>
+    </div>
+  </form>
+</div>
